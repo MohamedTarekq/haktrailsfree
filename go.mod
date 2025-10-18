@@ -1,3 +1,3 @@
-module github.com/rix4uni/haktrailsfree
+module github.com/MohamedTarekq/haktrailsfree
 
 go 1.23.0
