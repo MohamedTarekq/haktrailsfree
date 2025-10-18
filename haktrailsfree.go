@@ -1,18 +1,20 @@
 package main
 
 import (
-	"bufio"
-	"flag"
-	"fmt"
-	"io"
-	"net/http"
-	"os"
-	"path/filepath"
-	"regexp"
-	"time"
+    "bufio"
+    "flag"
+    "fmt"
+    "io"
+    "net/http"
+    "os"
+    "path/filepath"
+    "regexp"
+    "strings"
+    "time"
 
-	"github.com/rix4uni/haktrailsfree/banner"
+    "github.com/rix4uni/haktrailsfree/banner"
 )
+
 
 func main() {
 	// Parse command-line flags
@@ -107,7 +109,8 @@ func main() {
 			req.Header.Set("Sec-Fetch-User", "?1")
 			req.Header.Set("Upgrade-Insecure-Requests", "1")
 			req.Header.Set("User-Agent", *userAgent)
-			req.Header.Set("Cookie", string(cookies))
+			cleanCookies := strings.TrimSpace(strings.ReplaceAll(string(cookies), "\n", ""))
+            req.Header.Set("Cookie", cleanCookies)
 
 			// Perform the request
 			resp, err := http.DefaultClient.Do(req)
