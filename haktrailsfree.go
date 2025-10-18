@@ -12,7 +12,7 @@ import (
     "strings"
     "time"
 
-    "github.com/rix4uni/haktrailsfree/banner"
+    "github.com/MohamedTarekq/haktrailsfree/banner"
 )
 
 
